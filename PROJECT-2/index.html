@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4f2ec">
+  <title>Counter | Small steps, counted</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="counter-app" aria-labelledby="page-title">
+    <div class="topline">
+      <span class="status-dot" aria-hidden="true"></span>
+      <span>YOUR DAILY TALLY</span>
+      <span class="topline-mark" aria-hidden="true">01 / 01</span>
+    </div>
+
+    <section class="counter-panel">
+      <p class="eyebrow">ONE AT A TIME</p>
+      <h1 id="page-title">Little things<br>add up.</h1>
+
+      <div class="count-area">
+        <span class="count-label">CURRENT COUNT</span>
+        <h2 id="counter-value" aria-live="polite" aria-atomic="true">0</h2>
+      </div>
+
+      <div class="controls" aria-label="Counter controls">
+        <button class="control control-decrease" type="button" onclick="decrease()" aria-label="Decrease counter by one">
+          <span class="control-symbol" aria-hidden="true">−</span>
+          <span class="control-caption">Decrease (-1)</span>
+        </button>
+        <button class="control control-increase" type="button" onclick="increase()" aria-label="Increase counter by one">
+          <span class="control-symbol" aria-hidden="true">+</span>
+          <span class="control-caption">Increase (+1)</span>
+        </button>
+        <button class="control control-reset" type="button" onclick="reset()" aria-label="Reset counter">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7v5h5M5.3 15a7 7 0 1 0 .2-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span class="control-caption">Reset</span>
+        </button>
+      </div>
+
+      <div class="panel-foot">
+        <span>NO RUSH. JUST PROGRESS.</span>
+        <span class="foot-line" aria-hidden="true"></span>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <span>KEEP YOUR MOMENTUM</span>
+      <span>EST. TODAY</span>
+    </footer>
+  </main>
+</body>
+</html>

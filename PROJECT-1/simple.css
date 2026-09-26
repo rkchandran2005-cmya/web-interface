@@ -1,0 +1,116 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  color: #333;
+  font-family: Arial, sans-serif;
+}
+
+.profile-frame {
+  width: min(100%, 375px);
+  padding: 10px 19px;
+  background: linear-gradient(135deg, #5424d8, #3267f5);
+}
+
+.profile-app {
+  width: 100%;
+  padding: 18px 16px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgb(24 30 75 / 14%);
+}
+
+h1 {
+  margin: 10px 0 11px;
+  text-align: center;
+  font-size: 22px;
+}
+
+.intro {
+  margin: 0 0 10px;
+  text-align: center;
+  font-size: 13px;
+}
+
+label {
+  display: block;
+  margin: 8px 0 5px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  height: 36px;
+  padding: 0 8px;
+  border: 1px solid #d5d5d5;
+  border-radius: 6px;
+  background: #fff;
+  color: #333;
+  font: 13px Arial, sans-serif;
+}
+
+input:focus {
+  border-color: #2878ef;
+  outline: 2px solid rgb(40 120 239 / 18%);
+}
+
+button {
+  width: 100%;
+  min-height: 38px;
+  margin-top: 8px;
+  border: 0;
+  border-radius: 6px;
+  background: #2878ef;
+  color: #fff;
+  cursor: pointer;
+  font: 14px Arial, sans-serif;
+}
+
+button:hover {
+  background: #1768df;
+}
+
+.result-card {
+  margin-top: 18px;
+  padding: 12px;
+  border: 1px solid #dedede;
+  border-radius: 6px;
+  background: #f8f9fc;
+  font-size: 13px;
+}
+
+.result-card[hidden] {
+  display: none;
+}
+
+.result-card h2 {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+.result-card p {
+  margin: 7px 0;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 360px) {
+  body {
+    padding: 14px;
+  }
+
+  .profile-frame {
+    padding: 8px;
+  }
+
+  .profile-app {
+    padding: 16px 13px;
+  }
+}

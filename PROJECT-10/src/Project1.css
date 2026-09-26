@@ -1,0 +1,348 @@
+.todo-page {
+  min-height: 100vh;
+  padding: 64px 24px;
+  display: grid;
+  place-items: center;
+  background-color: #f5f3ec;
+  background-image: radial-gradient(#d8d5c9 0.7px, transparent 0.7px);
+  background-size: 18px 18px;
+}
+
+.todo-app {
+  width: min(100%, 620px);
+  padding: 52px 56px 26px;
+  background: #fffefa;
+  border: 1px solid #e5e1d5;
+  border-radius: 8px;
+  box-shadow: 0 24px 70px rgb(48 54 42 / 10%);
+  animation: arrive 480ms ease-out both;
+}
+
+.todo-header {
+  padding-bottom: 30px;
+  border-bottom: 1px solid #e9e6dc;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #61766b;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.eyebrow span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d38a54;
+}
+
+.todo-header h1 {
+  margin: 21px 0 12px;
+  color: #203b30;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(38px, 8vw, 54px);
+  font-weight: 400;
+  line-height: 1.02;
+}
+
+.intro {
+  margin: 0;
+  color: #7e837a;
+  font-size: 15px;
+}
+
+.task-form {
+  display: flex;
+  gap: 10px;
+  margin: 27px 0 34px;
+}
+
+.task-form input {
+  min-width: 0;
+  height: 50px;
+  flex: 1;
+  padding: 0 15px;
+  border: 1px solid #d9ddd4;
+  border-radius: 5px;
+  outline: none;
+  background: #fff;
+  color: #20342d;
+  font-size: 14px;
+  transition: border-color 160ms, box-shadow 160ms;
+}
+
+.task-form input::placeholder {
+  color: #a2a59d;
+}
+
+.task-form input:focus {
+  border-color: #527b65;
+  box-shadow: 0 0 0 3px rgb(82 123 101 / 13%);
+}
+
+.add-button {
+  min-width: 94px;
+  height: 50px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 5px;
+  background: #315d48;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  transition: background 160ms, transform 160ms;
+}
+
+.add-button:hover {
+  background: #244a38;
+}
+
+.add-button:active {
+  transform: translateY(1px);
+}
+
+.add-button span {
+  margin-right: 5px;
+  font-size: 19px;
+  font-weight: 400;
+  vertical-align: -1px;
+}
+
+.list-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.list-heading h2 {
+  margin: 0;
+  color: #294437;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 21px;
+  font-weight: 400;
+}
+
+.task-count {
+  color: #92968e;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.task-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.task-row {
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid #eeece5;
+  animation: arrive 220ms ease-out both;
+}
+
+.task-label {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  cursor: pointer;
+}
+
+.task-label input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.custom-checkbox {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid #b9c5b9;
+  border-radius: 50%;
+  transition: background 160ms, border-color 160ms;
+}
+
+.custom-checkbox::after {
+  content: '';
+  width: 5px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 1.5px 1.5px 0;
+  transform: rotate(45deg) translate(-1px, -1px) scale(0);
+  transition: transform 160ms;
+}
+
+.task-label input:focus-visible + .custom-checkbox {
+  outline: 3px solid rgb(82 123 101 / 24%);
+  outline-offset: 2px;
+}
+
+.task-label input:checked + .custom-checkbox {
+  border-color: #527b65;
+  background: #527b65;
+}
+
+.task-label input:checked + .custom-checkbox::after {
+  transform: rotate(45deg) translate(-1px, -1px) scale(1);
+}
+
+.task-title {
+  overflow-wrap: anywhere;
+  color: #34483d;
+  font-size: 14px;
+  line-height: 1.45;
+  transition: color 160ms;
+}
+
+.is-complete .task-title {
+  color: #a1a69e;
+  text-decoration: line-through;
+  text-decoration-color: #a1a69e;
+}
+
+.delete-button {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: #a0a49b;
+  transition: color 150ms, background 150ms;
+}
+
+.delete-button:hover {
+  background: #f8eae5;
+  color: #a64c36;
+}
+
+.delete-button svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.4;
+}
+
+.empty-state {
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #eeece5;
+  color: #9a9d95;
+  font-size: 12px;
+}
+
+.empty-mark {
+  width: 29px;
+  height: 29px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 8px;
+  border: 1px solid #d8ded5;
+  border-radius: 50%;
+  color: #64816d;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.empty-state p {
+  margin: 0 0 3px;
+  color: #526459;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 16px;
+}
+
+.todo-footer {
+  min-height: 52px;
+  display: flex;
+  align-items: end;
+  gap: 12px;
+  color: #a0a399;
+  font-size: 10px;
+}
+
+.todo-footer span:first-child {
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.todo-footer span:last-child {
+  font-size: 11px;
+  letter-spacing: 0;
+}
+
+.footer-line {
+  height: 1px;
+  flex: 1;
+  margin-bottom: 5px;
+  background: #e9e6dc;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+@keyframes arrive {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 560px) {
+  .todo-page {
+    min-height: 100svh;
+    padding: 20px 14px;
+  }
+
+  .todo-app {
+    padding: 36px 24px 21px;
+  }
+
+  .todo-header h1 {
+    font-size: 42px;
+  }
+
+  .task-form {
+    gap: 7px;
+  }
+
+  .add-button {
+    min-width: 82px;
+    padding: 0 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,20 @@
+.calculator-page { display: grid; grid-template-columns: 1fr 380px; align-items: center; gap: 100px; max-width: 940px; min-height: 680px; margin: 0 auto; padding: 60px 0; }
+.calculator-intro h1 { max-width: 520px; }
+.calculator-intro > p:last-child { max-width: 340px; margin-top: 27px; color: #7b837a; font-size: 14px; line-height: 1.8; }
+.calculator-card { padding: 22px; background: #28463a; box-shadow: 18px 18px 0 #d7dfd2; }
+.calculator-display { display: flex; min-height: 120px; align-items: flex-end; flex-direction: column; justify-content: flex-end; padding: 17px 15px; margin-bottom: 16px; background: #1d342c; color: #fffaf1; }
+.calculator-display span { min-height: 15px; color: #9aafa1; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .08em; }
+.calculator-display strong { max-width: 100%; overflow: hidden; color: #fffaf1; font-family: 'DM Mono', monospace; font-size: 38px; font-weight: 400; letter-spacing: -.08em; text-overflow: ellipsis; }
+.calculator-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.calculator-button { min-height: 58px; border: 0; background: #f4f1e9; color: #294538; font-size: 17px; transition: background .15s, transform .15s; }
+.calculator-button:hover { background: #fffdf8; }
+.calculator-button:active { transform: translateY(2px); }
+.calculator-button.function { background: #dbe4d5; color: #557060; font-size: 11px; font-weight: 700; }
+.calculator-button.operator { background: #e9a26a; font-size: 24px; }
+.calculator-button.equals { background: #e56d4b; color: #fffaf1; font-size: 24px; }
+.calculator-button.zero { grid-column: span 2; }
+.calculator-hint { margin: 18px 0 0; color: #9aafa1; font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: .04em; text-align: center; text-transform: uppercase; }
+@media (max-width: 760px) {
+  .calculator-page { grid-template-columns: 1fr; gap: 38px; min-height: auto; padding: 70px 0 55px; }
+  .calculator-card { max-width: 380px; width: 100%; margin: 0 auto; box-shadow: 12px 12px 0 #d7dfd2; }
+}

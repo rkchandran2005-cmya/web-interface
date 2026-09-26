@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#4d36df">
+  <title>Student Profile Card</title>
+  <link rel="stylesheet" href="simple.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="profile-frame">
+    <div class="profile-app">
+      <h1>Student Profile Card</h1>
+      <p class="intro">Enter the student details below and click the button.</p>
+
+      <form id="student-form">
+        <label for="roll-number">Roll Number</label>
+        <input id="roll-number" name="rollNumber" type="text" maxlength="20" required>
+
+        <label for="student-name">Student Name</label>
+        <input id="student-name" name="studentName" type="text" minlength="2" maxlength="60" required>
+
+        <label for="student-marks">Marks</label>
+        <input id="student-marks" name="marks" type="number" min="0" max="100" step="1" required>
+
+        <button type="submit">Display Profile</button>
+      </form>
+
+      <section id="profile-card" class="result-card" aria-live="polite" hidden>
+        <h2>Student Details</h2>
+        <p><strong>Roll Number:</strong> <span id="display-roll"></span></p>
+        <p><strong>Student Name:</strong> <span id="display-name"></span></p>
+        <p><strong>Marks:</strong> <span id="display-marks"></span> / 100</p>
+        <p><strong>Grade:</strong> <span id="display-grade"></span></p>
+        <p><strong>Performance:</strong> <span id="display-status"></span></p>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
