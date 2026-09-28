@@ -1,0 +1,174 @@
+name: Deploy All 10 Projects
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Create deployment folder
+        run: |
+          mkdir -p site
+
+      - name: Copy Project 1
+        run: |
+          mkdir -p site/PROJECT-1
+          cp -r PROJECT-1/* site/PROJECT-1/
+
+      - name: Copy Project 2
+        run: |
+          mkdir -p site/PROJECT-2
+          cp -r PROJECT-2/* site/PROJECT-2/
+
+      - name: Build Project 3
+        run: |
+          cd PROJECT-3
+          npm install
+          npm run build -- --base=/web-interface/PROJECT-3/
+          mkdir -p ../site/PROJECT-3
+          cp -r dist/* ../site/PROJECT-3/
+
+      - name: Build Project 4
+        run: |
+          cd PROJECT-4/PROJECT-4
+          npm install
+          npm run build -- --base=/web-interface/PROJECT-4/
+          mkdir -p ../../site/PROJECT-4
+          cp -r dist/* ../../site/PROJECT-4/
+
+      - name: Build Project 5
+        run: |
+          cd PROJECT-5/project-5
+          npm install
+          npm run build -- --base=/web-interface/PROJECT-5/
+          mkdir -p ../../site/PROJECT-5
+          cp -r dist/* ../../site/PROJECT-5/
+
+      - name: Build Project 6
+        run: |
+          cd PROJECT-6
+          npm install
+          npm run build -- --base=/web-interface/PROJECT-6/
+          mkdir -p ../site/PROJECT-6
+          cp -r dist/* ../site/PROJECT-6/
+
+      - name: Build Project 7
+        run: |
+          cd PROJECT-7/project-7
+          npm install
+          npm run build -- --base=/web-interface/PROJECT-7/
+          mkdir -p ../../site/PROJECT-7
+          cp -r dist/* ../../site/PROJECT-7/
+
+      - name: Build Project 8
+        run: |
+          cd PROJECT-8
+          npm install
+          npm run build -- --base=/web-interface/PROJECT-8/
+          mkdir -p ../site/PROJECT-8
+          cp -r dist/* ../site/PROJECT-8/
+
+      - name: Build Project 9
+        run: |
+          cd PROJECT-9/project-9
+          npm install
+          npm run build -- --base=/web-interface/PROJECT-9/
+          mkdir -p ../../site/PROJECT-9
+          cp -r dist/* ../../site/PROJECT-9/
+
+      - name: Build Project 10
+        run: |
+          cd PROJECT-10/project-10
+          npm install
+          npm run build -- --base=/web-interface/PROJECT-10/
+          mkdir -p ../../site/PROJECT-10
+          cp -r dist/* ../../site/PROJECT-10/
+
+      - name: Create main project page
+        run: |
+          cat > site/index.html <<'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Web Interface Projects</title>
+            <style>
+              body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+                padding: 40px;
+              }
+              h1 {
+                margin-bottom: 30px;
+              }
+              .projects {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+              }
+              a {
+                text-decoration: none;
+                padding: 15px 25px;
+                border: 1px solid #333;
+                border-radius: 8px;
+                color: #222;
+              }
+              a:hover {
+                background: #eee;
+              }
+            </style>
+          </head>
+          <body>
+            <h1>Web Interface Projects</h1>
+
+            <div class="projects">
+              <a href="./PROJECT-1/">PROJECT 1</a>
+              <a href="./PROJECT-2/">PROJECT 2</a>
+              <a href="./PROJECT-3/">PROJECT 3</a>
+              <a href="./PROJECT-4/">PROJECT 4</a>
+              <a href="./PROJECT-5/">PROJECT 5</a>
+              <a href="./PROJECT-6/">PROJECT 6</a>
+              <a href="./PROJECT-7/">PROJECT 7</a>
+              <a href="./PROJECT-8/">PROJECT 8</a>
+              <a href="./PROJECT-9/">PROJECT 9</a>
+              <a href="./PROJECT-10/">PROJECT 10</a>
+            </div>
+          </body>
+          </html>
+          EOF
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload website
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
