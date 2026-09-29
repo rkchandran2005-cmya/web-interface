@@ -56,11 +56,11 @@ jobs:
 
       - name: Build Project 5
         run: |
-          cd PROJECT-5
+          cd PROJECT-5/project-5
           npm install
           npm run build -- --base=/web-interface/PROJECT-5/
-          mkdir -p ../site/PROJECT-5
-          cp -r dist/* ../site/PROJECT-5/
+          mkdir -p ../../site/PROJECT-5
+          cp -r dist/* ../../site/PROJECT-5/
 
       - name: Build Project 6
         run: |
@@ -117,37 +117,37 @@ jobs:
               }
               a {
                 display: block;
-                width: 250px;
-                margin: 10px auto;
+                margin: 15px auto;
                 padding: 15px;
-                background: #24292f;
+                max-width: 300px;
+                background: #222;
                 color: white;
                 text-decoration: none;
                 border-radius: 8px;
               }
               a:hover {
-                background: #0969da;
+                background: #555;
               }
             </style>
           </head>
           <body>
             <h1>Web Interface - 10 Projects</h1>
 
-            <a href="./PROJECT-1/">Project 1</a>
-            <a href="./PROJECT-2/">Project 2</a>
-            <a href="./PROJECT-3/">Project 3</a>
-            <a href="./PROJECT-4/">Project 4</a>
-            <a href="./PROJECT-5/">Project 5</a>
-            <a href="./PROJECT-6/">Project 6</a>
-            <a href="./PROJECT-7/">Project 7</a>
-            <a href="./PROJECT-8/">Project 8</a>
-            <a href="./PROJECT-9/">Project 9</a>
-            <a href="./PROJECT-10/">Project 10</a>
+            <a href="./PROJECT-1/">PROJECT 1</a>
+            <a href="./PROJECT-2/">PROJECT 2</a>
+            <a href="./PROJECT-3/">PROJECT 3</a>
+            <a href="./PROJECT-4/">PROJECT 4</a>
+            <a href="./PROJECT-5/">PROJECT 5</a>
+            <a href="./PROJECT-6/">PROJECT 6</a>
+            <a href="./PROJECT-7/">PROJECT 7</a>
+            <a href="./PROJECT-8/">PROJECT 8</a>
+            <a href="./PROJECT-9/">PROJECT 9</a>
+            <a href="./PROJECT-10/">PROJECT 10</a>
           </body>
           </html>
           EOF
 
-      - name: Setup GitHub Pages
+      - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
       - name: Upload website
