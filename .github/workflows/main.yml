@@ -55,12 +55,12 @@ jobs:
           cp -r dist/* ../site/PROJECT-4/
 
       - name: Build Project 5
-        run: |
-          cd PROJECT-5/project-5
-          npm install
-          npm run build -- --base=/web-interface/PROJECT-5/
-          mkdir -p ../../site/PROJECT-5
-          cp -r dist/* ../../site/PROJECT-5/
+  run: |
+    cd PROJECT-5
+    npm install
+    npm run build -- --base=/web-interface/PROJECT-5/
+    mkdir -p ../site/PROJECT-5
+    cp -r dist/* ../site/PROJECT-5/
 
       - name: Build Project 6
         run: |
