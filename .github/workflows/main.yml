@@ -26,110 +26,216 @@ jobs:
 
       - name: Create site folder
         run: |
+          rm -rf site
           mkdir -p site
+
+      # ---------------- PROJECT 1 ----------------
 
       - name: Copy Project 1
         run: |
           mkdir -p site/PROJECT-1
           cp -r PROJECT-1/* site/PROJECT-1/
 
+      # ---------------- PROJECT 2 ----------------
+
       - name: Copy Project 2
         run: |
           mkdir -p site/PROJECT-2
           cp -r PROJECT-2/* site/PROJECT-2/
 
+      # ---------------- PROJECT 3 ----------------
+
       - name: Build Project 3
         run: |
-          cd PROJECT-3
+          PROJECT_DIR=$(find PROJECT-3 -name package.json -not -path "*/node_modules/*" | head -1)
+          if [ -z "$PROJECT_DIR" ]; then
+            echo "package.json not found for PROJECT-3"
+            exit 1
+          fi
+
+          APP_DIR=$(dirname "$PROJECT_DIR")
+          cd "$APP_DIR"
+
           npm install
           npm run build -- --base=/web-interface/PROJECT-3/
-          mkdir -p ../site/PROJECT-3
-          cp -r dist/* ../site/PROJECT-3/
+
+          mkdir -p "$GITHUB_WORKSPACE/site/PROJECT-3"
+          cp -r dist/* "$GITHUB_WORKSPACE/site/PROJECT-3/"
+
+      # ---------------- PROJECT 4 ----------------
 
       - name: Build Project 4
         run: |
-          cd PROJECT-4
+          PROJECT_DIR=$(find PROJECT-4 -name package.json -not -path "*/node_modules/*" | head -1)
+          if [ -z "$PROJECT_DIR" ]; then
+            echo "package.json not found for PROJECT-4"
+            exit 1
+          fi
+
+          APP_DIR=$(dirname "$PROJECT_DIR")
+          cd "$APP_DIR"
+
           npm install
           npm run build -- --base=/web-interface/PROJECT-4/
-          mkdir -p ../site/PROJECT-4
-          cp -r dist/* ../site/PROJECT-4/
+
+          mkdir -p "$GITHUB_WORKSPACE/site/PROJECT-4"
+          cp -r dist/* "$GITHUB_WORKSPACE/site/PROJECT-4/"
+
+      # ---------------- PROJECT 5 ----------------
 
       - name: Build Project 5
-  run: |
-    cd PROJECT-5
-    npm install
-    npm run build -- --base=/web-interface/PROJECT-5/
-    mkdir -p ../site/PROJECT-5
-    cp -r dist/* ../site/PROJECT-5/
+        run: |
+          PROJECT_DIR=$(find PROJECT-5 -name package.json -not -path "*/node_modules/*" | head -1)
+          if [ -z "$PROJECT_DIR" ]; then
+            echo "package.json not found for PROJECT-5"
+            exit 1
+          fi
+
+          APP_DIR=$(dirname "$PROJECT_DIR")
+          cd "$APP_DIR"
+
+          npm install
+          npm run build -- --base=/web-interface/PROJECT-5/
+
+          mkdir -p "$GITHUB_WORKSPACE/site/PROJECT-5"
+          cp -r dist/* "$GITHUB_WORKSPACE/site/PROJECT-5/"
+
+      # ---------------- PROJECT 6 ----------------
 
       - name: Build Project 6
         run: |
-          cd PROJECT-6
+          PROJECT_DIR=$(find PROJECT-6 -name package.json -not -path "*/node_modules/*" | head -1)
+          if [ -z "$PROJECT_DIR" ]; then
+            echo "package.json not found for PROJECT-6"
+            exit 1
+          fi
+
+          APP_DIR=$(dirname "$PROJECT_DIR")
+          cd "$APP_DIR"
+
           npm install
           npm run build -- --base=/web-interface/PROJECT-6/
-          mkdir -p ../site/PROJECT-6
-          cp -r dist/* ../site/PROJECT-6/
+
+          mkdir -p "$GITHUB_WORKSPACE/site/PROJECT-6"
+          cp -r dist/* "$GITHUB_WORKSPACE/site/PROJECT-6/"
+
+      # ---------------- PROJECT 7 ----------------
 
       - name: Build Project 7
         run: |
-          cd PROJECT-7/project-7
+          PROJECT_DIR=$(find PROJECT-7 -name package.json -not -path "*/node_modules/*" | head -1)
+          if [ -z "$PROJECT_DIR" ]; then
+            echo "package.json not found for PROJECT-7"
+            exit 1
+          fi
+
+          APP_DIR=$(dirname "$PROJECT_DIR")
+          cd "$APP_DIR"
+
           npm install
           npm run build -- --base=/web-interface/PROJECT-7/
-          mkdir -p ../../site/PROJECT-7
-          cp -r dist/* ../../site/PROJECT-7/
+
+          mkdir -p "$GITHUB_WORKSPACE/site/PROJECT-7"
+          cp -r dist/* "$GITHUB_WORKSPACE/site/PROJECT-7/"
+
+      # ---------------- PROJECT 8 ----------------
 
       - name: Build Project 8
         run: |
-          cd PROJECT-8
+          PROJECT_DIR=$(find PROJECT-8 -name package.json -not -path "*/node_modules/*" | head -1)
+          if [ -z "$PROJECT_DIR" ]; then
+            echo "package.json not found for PROJECT-8"
+            exit 1
+          fi
+
+          APP_DIR=$(dirname "$PROJECT_DIR")
+          cd "$APP_DIR"
+
           npm install
           npm run build -- --base=/web-interface/PROJECT-8/
-          mkdir -p ../site/PROJECT-8
-          cp -r dist/* ../site/PROJECT-8/
+
+          mkdir -p "$GITHUB_WORKSPACE/site/PROJECT-8"
+          cp -r dist/* "$GITHUB_WORKSPACE/site/PROJECT-8/"
+
+      # ---------------- PROJECT 9 ----------------
 
       - name: Build Project 9
         run: |
-          cd PROJECT-9/project-9
+          PROJECT_DIR=$(find PROJECT-9 -name package.json -not -path "*/node_modules/*" | head -1)
+          if [ -z "$PROJECT_DIR" ]; then
+            echo "package.json not found for PROJECT-9"
+            exit 1
+          fi
+
+          APP_DIR=$(dirname "$PROJECT_DIR")
+          cd "$APP_DIR"
+
           npm install
           npm run build -- --base=/web-interface/PROJECT-9/
-          mkdir -p ../../site/PROJECT-9
-          cp -r dist/* ../../site/PROJECT-9/
+
+          mkdir -p "$GITHUB_WORKSPACE/site/PROJECT-9"
+          cp -r dist/* "$GITHUB_WORKSPACE/site/PROJECT-9/"
+
+      # ---------------- PROJECT 10 ----------------
 
       - name: Build Project 10
         run: |
-          cd PROJECT-10/project-10
+          PROJECT_DIR=$(find PROJECT-10 -name package.json -not -path "*/node_modules/*" | head -1)
+          if [ -z "$PROJECT_DIR" ]; then
+            echo "package.json not found for PROJECT-10"
+            exit 1
+          fi
+
+          APP_DIR=$(dirname "$PROJECT_DIR")
+          cd "$APP_DIR"
+
           npm install
           npm run build -- --base=/web-interface/PROJECT-10/
-          mkdir -p ../../site/PROJECT-10
-          cp -r dist/* ../../site/PROJECT-10/
+
+          mkdir -p "$GITHUB_WORKSPACE/site/PROJECT-10"
+          cp -r dist/* "$GITHUB_WORKSPACE/site/PROJECT-10/"
+
+      # ---------------- MAIN PAGE ----------------
 
       - name: Create main project page
         run: |
           cat > site/index.html <<'EOF'
           <!DOCTYPE html>
-          <html>
+          <html lang="en">
           <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Web Interface - 10 Projects</title>
+
             <style>
               body {
                 font-family: Arial, sans-serif;
                 text-align: center;
                 padding: 40px;
+                background: #f5f5f5;
               }
+
+              h1 {
+                margin-bottom: 30px;
+              }
+
               a {
                 display: block;
+                width: 250px;
                 margin: 15px auto;
                 padding: 15px;
-                max-width: 300px;
                 background: #222;
                 color: white;
                 text-decoration: none;
                 border-radius: 8px;
               }
+
               a:hover {
                 background: #555;
               }
             </style>
           </head>
+
           <body>
             <h1>Web Interface - 10 Projects</h1>
 
@@ -147,13 +253,15 @@ jobs:
           </html>
           EOF
 
+      # ---------------- GITHUB PAGES ----------------
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
       - name: Upload website
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./site
+          path: site
 
       - name: Deploy to GitHub Pages
         id: deployment
