@@ -15,10 +15,6 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -26,9 +22,9 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
-      - name: Create deployment folder
+      - name: Create site folder
         run: |
           mkdir -p site
 
@@ -51,20 +47,20 @@ jobs:
           cp -r dist/* ../site/PROJECT-3/
 
       - name: Build Project 4
-  run: |
-    cd PROJECT-4
-    npm install
-    npm run build -- --base=/web-interface/PROJECT-4/
-    mkdir -p ../site/PROJECT-4
-    cp -r dist/* ../site/PROJECT-4/
+        run: |
+          cd PROJECT-4
+          npm install
+          npm run build -- --base=/web-interface/PROJECT-4/
+          mkdir -p ../site/PROJECT-4
+          cp -r dist/* ../site/PROJECT-4/
 
       - name: Build Project 5
         run: |
-          cd PROJECT-5/project-5
+          cd PROJECT-5
           npm install
           npm run build -- --base=/web-interface/PROJECT-5/
-          mkdir -p ../../site/PROJECT-5
-          cp -r dist/* ../../site/PROJECT-5/
+          mkdir -p ../site/PROJECT-5
+          cp -r dist/* ../site/PROJECT-5/
 
       - name: Build Project 6
         run: |
@@ -112,56 +108,46 @@ jobs:
           <!DOCTYPE html>
           <html>
           <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Web Interface Projects</title>
+            <title>Web Interface - 10 Projects</title>
             <style>
               body {
                 font-family: Arial, sans-serif;
                 text-align: center;
                 padding: 40px;
               }
-              h1 {
-                margin-bottom: 30px;
-              }
-              .projects {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
-              }
               a {
+                display: block;
+                width: 250px;
+                margin: 10px auto;
+                padding: 15px;
+                background: #24292f;
+                color: white;
                 text-decoration: none;
-                padding: 15px 25px;
-                border: 1px solid #333;
                 border-radius: 8px;
-                color: #222;
               }
               a:hover {
-                background: #eee;
+                background: #0969da;
               }
             </style>
           </head>
           <body>
-            <h1>Web Interface Projects</h1>
+            <h1>Web Interface - 10 Projects</h1>
 
-            <div class="projects">
-              <a href="./PROJECT-1/">PROJECT 1</a>
-              <a href="./PROJECT-2/">PROJECT 2</a>
-              <a href="./PROJECT-3/">PROJECT 3</a>
-              <a href="./PROJECT-4/">PROJECT 4</a>
-              <a href="./PROJECT-5/">PROJECT 5</a>
-              <a href="./PROJECT-6/">PROJECT 6</a>
-              <a href="./PROJECT-7/">PROJECT 7</a>
-              <a href="./PROJECT-8/">PROJECT 8</a>
-              <a href="./PROJECT-9/">PROJECT 9</a>
-              <a href="./PROJECT-10/">PROJECT 10</a>
-            </div>
+            <a href="./PROJECT-1/">Project 1</a>
+            <a href="./PROJECT-2/">Project 2</a>
+            <a href="./PROJECT-3/">Project 3</a>
+            <a href="./PROJECT-4/">Project 4</a>
+            <a href="./PROJECT-5/">Project 5</a>
+            <a href="./PROJECT-6/">Project 6</a>
+            <a href="./PROJECT-7/">Project 7</a>
+            <a href="./PROJECT-8/">Project 8</a>
+            <a href="./PROJECT-9/">Project 9</a>
+            <a href="./PROJECT-10/">Project 10</a>
           </body>
           </html>
           EOF
 
-      - name: Configure GitHub Pages
+      - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
 
       - name: Upload website
